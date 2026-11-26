@@ -1,0 +1,10 @@
+Solo necesitas guardar tus 4 fotos de los hitos dentro de esta carpeta ("fotos/") con estos nombres:
+
+- hito-1.jpg -> Hito 1: Cuando empezamos a hablar (después del FAS)
+- hito-2.jpg -> Hito 2: Modelo ONU El Femenino (dormida en tu hombro) — también aparece en la portada
+- hito-3.jpg -> Hito 3: Modelo ONU La Merced (tomados de la mano)
+- hito-4.jpg -> Hito 4: Oficialmente novios (9 de noviembre)
+
+Esas mismas 4 fotos alimentan automáticamente la portada, la historia y la galería completa sin dejar espacios vacíos.
+
+Nota: Puedes usar archivos .jpg, .jpeg, .png o .webp. Si tus archivos tienen otra extensión (por ejemplo .png), solo cambia ".jpg" por ".png" en config.js.
