@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Feliz Cumpleaños | Para Ti</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <canvas id="confetti-canvas" aria-hidden="true"></canvas>
+
+    <!-- Navegación -->
+    <header class="site-header">
+      <div class="container header-inner">
+        <a href="#inicio" class="brand" id="nav-brand">Para ti</a>
+        <nav class="nav-links" aria-label="Secciones de la página">
+          <a href="#historia">Historia</a>
+          <a href="#carta">Carta</a>
+          <a href="#razones">Razones</a>
+          <a href="#vales">Vales</a>
+        </nav>
+        <button type="button" class="btn btn-soft btn-sm" id="btn-celebrar">
+          Celebrar ✨
+        </button>
+      </div>
+    </header>
+
+    <main>
+      <!-- 1. Hero / Portada -->
+      <section id="inicio" class="hero section">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <div class="hero-badges">
+              <span class="pill" id="hero-tag">Feliz cumpleaños</span>
+              <span class="pill pill-outline" id="hero-date"></span>
+            </div>
+
+            <h1 id="hero-title" class="hero-title"></h1>
+            <p id="hero-subtitle" class="hero-subtitle"></p>
+
+            <div class="hero-stats" id="hero-stats">
+              <div class="stat-chip" id="stat-days-wrap">
+                <strong id="stat-days">0</strong>
+                <span id="stat-days-label"></span>
+              </div>
+              <div class="stat-chip" id="stat-age-wrap">
+                <strong id="stat-age"></strong>
+                <span>años iluminando el mundo</span>
+              </div>
+            </div>
+
+            <div class="hero-actions">
+              <a href="#carta" class="btn btn-primary">Leer tu carta</a>
+              <a href="#historia" class="btn btn-ghost">Nuestra historia</a>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <figure class="polaroid polaroid-hero" id="hero-polaroid">
+              <div class="polaroid-media" id="hero-photo-slot"></div>
+              <figcaption class="handwritten polaroid-caption" id="hero-photo-caption"></figcaption>
+            </figure>
+            <div class="floating-note" aria-hidden="true">
+              <span class="handwritten">Nuestro recuerdo favorito</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. Nuestra Historia -->
+      <section id="historia" class="section section-tinted">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Capítulo a capítulo</span>
+            <h2 id="historia-title"></h2>
+            <p id="historia-subtitle"></p>
+          </div>
+          <div class="timeline" id="timeline-list"></div>
+        </div>
+      </section>
+
+      <!-- 3. Carta de Cumpleaños -->
+      <section id="carta" class="section">
+        <div class="container letter-container">
+          <div class="section-head">
+            <span class="eyebrow">De mi corazón para ti</span>
+            <h2 id="carta-title"></h2>
+            <p id="carta-subtitle"></p>
+          </div>
+
+          <div class="envelope-wrapper" id="envelope-wrapper">
+            <div class="envelope-closed" id="envelope-closed">
+              <div class="envelope-flap"></div>
+              <button type="button" class="wax-seal" id="btn-open-letter" aria-expanded="false">
+                <span class="wax-seal-heart">♥</span>
+                <span class="wax-seal-text">Abrir carta</span>
+              </button>
+              <p class="envelope-to handwritten" id="envelope-to"></p>
+            </div>
+
+            <article class="letter-paper" id="letter-paper" hidden>
+              <div class="letter-header">
+                <span class="letter-date" id="letter-date"></span>
+                <button type="button" class="btn-link" id="btn-close-letter">Guardar en el sobre</button>
+              </div>
+              <h3 class="letter-salutation handwritten" id="letter-salutation"></h3>
+              <div class="letter-body" id="letter-body"></div>
+              <div class="letter-signoff">
+                <p id="letter-farewell"></p>
+                <p class="handwritten letter-signature" id="letter-signature"></p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. Razones por las que te amo -->
+      <section id="razones" class="section section-tinted">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Lo que más amo de ti</span>
+            <h2 id="razones-title"></h2>
+            <p id="razones-subtitle"></p>
+          </div>
+
+          <div class="reason-spotlight">
+            <div class="spotlight-card">
+              <span class="spotlight-label" id="spotlight-index">Razón #1</span>
+              <p class="spotlight-text" id="spotlight-text"></p>
+              <button type="button" class="btn btn-soft" id="btn-next-reason">
+                Ver otra razón ♥
+              </button>
+            </div>
+          </div>
+
+          <ol class="reasons-grid" id="reasons-grid"></ol>
+        </div>
+      </section>
+
+      <!-- 5. Vales de Cumpleaños -->
+      <section id="vales" class="section">
+        <div class="container">
+          <div class="section-head">
+            <span class="eyebrow">Para consentirte</span>
+            <h2 id="vales-title"></h2>
+            <p id="vales-subtitle"></p>
+          </div>
+
+          <div class="vouchers-grid" id="vouchers-grid"></div>
+        </div>
+      </section>
+
+      <!-- 6. Nuestra Canción + Cierre -->
+      <section id="cancion" class="section section-tinted">
+        <div class="container song-section">
+          <div class="song-card">
+            <div class="vinyl" aria-hidden="true">
+              <div class="vinyl-label">♥</div>
+            </div>
+            <div class="song-info">
+              <span class="eyebrow" id="cancion-eyebrow"></span>
+              <h2 class="song-title" id="cancion-nombre"></h2>
+              <p class="song-artist" id="cancion-artista"></p>
+              <p class="song-note" id="cancion-dedicatoria"></p>
+              <a
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="btn btn-primary"
+                id="cancion-link"
+              ></a>
+            </div>
+          </div>
+
+          <div class="final-wish">
+            <h2 id="cierre-titulo"></h2>
+            <p id="cierre-mensaje"></p>
+            <button type="button" class="btn btn-soft" id="btn-celebrar-footer">
+              Lanzar confeti de cumpleaños 🎉
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Pie de página -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p id="footer-text"></p>
+        <button type="button" class="btn-link subtle-edit-trigger" id="btn-open-editor">
+          Personalizar textos y fotos
+        </button>
+      </div>
+    </footer>
+
+    <!-- Lightbox de Fotos -->
+    <div class="lightbox" id="lightbox" hidden role="dialog" aria-modal="true" aria-labelledby="lightbox-title">
+      <div class="lightbox-backdrop" data-close-lightbox></div>
+      <div class="lightbox-dialog">
+        <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Cerrar foto">✕</button>
+        <button type="button" class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="Foto anterior">‹</button>
+        <div class="lightbox-content">
+          <div class="lightbox-media" id="lightbox-media"></div>
+          <div class="lightbox-caption">
+            <div class="lightbox-meta">
+              <span class="pill pill-sm" id="lightbox-category"></span>
+              <span class="lightbox-date" id="lightbox-date"></span>
+            </div>
+            <h3 id="lightbox-title"></h3>
+            <p id="lightbox-note"></p>
+          </div>
+        </div>
+        <button type="button" class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="Foto siguiente">›</button>
+      </div>
+    </div>
+
+    <!-- Panel lateral de Personalización (Vista previa local + Exportar config.js) -->
+    <aside class="editor-drawer" id="editor-drawer" hidden aria-label="Personalizar regalo">
+      <div class="editor-backdrop" id="editor-backdrop"></div>
+      <div class="editor-panel">
+        <div class="editor-header">
+          <div>
+            <h3>Personalizar regalo</h3>
+            <p>Cambia los nombres o prueba tus fotos aquí mismo en tu navegador.</p>
+          </div>
+          <button type="button" class="icon-btn" id="btn-close-editor" aria-label="Cerrar panel">✕</button>
+        </div>
+
+        <div class="editor-body">
+          <div class="editor-group">
+            <h4>1. Nombres y fechas</h4>
+            <label>
+              <span>Nombre de ella</span>
+              <input type="text" id="ed-nombreElla" placeholder="Ej: Sofía" />
+            </label>
+            <label>
+              <span>Apodo cariñoso</span>
+              <input type="text" id="ed-apodo" placeholder="Ej: mi amor" />
+            </label>
+            <label>
+              <span>Tu nombre</span>
+              <input type="text" id="ed-tuNombre" placeholder="Ej: Juan" />
+            </label>
+            <div class="editor-row">
+              <label>
+                <span>Edad</span>
+                <input type="text" id="ed-edad" placeholder="Ej: 24" />
+              </label>
+              <label>
+                <span>Fecha de cumpleaños</span>
+                <input type="text" id="ed-fechaCumpleanos" placeholder="Ej: 25 de Noviembre" />
+              </label>
+            </div>
+            <label>
+              <span>Inicio de relación (para el contador)</span>
+              <input type="date" id="ed-fechaInicio" />
+            </label>
+          </div>
+
+          <div class="editor-group">
+            <h4>2. Subir fotos para previsualizar</h4>
+            <p class="editor-hint">
+              Las fotos que subas aquí se guardan localmente en este navegador. Si vas a subir la página a internet, guárdalas también en la carpeta <code>fotos/</code>.
+            </p>
+            <div id="editor-photos-list" class="editor-photos-list"></div>
+          </div>
+
+          <div class="editor-group">
+            <h4>3. Carta de cumpleaños</h4>
+            <label>
+              <span>Saludo</span>
+              <input type="text" id="ed-cartaSaludo" />
+            </label>
+            <label>
+              <span>Contenido de la carta (separa párrafos con una línea vacía)</span>
+              <textarea id="ed-cartaParrafos" rows="7"></textarea>
+            </label>
+            <label>
+              <span>Firma</span>
+              <input type="text" id="ed-cartaFirma" />
+            </label>
+          </div>
+
+          <div class="editor-group">
+            <h4>4. Razones por las que te encanta</h4>
+            <label>
+              <span>Escribe una razón por línea</span>
+              <textarea id="ed-razones" rows="6"></textarea>
+            </label>
+          </div>
+
+          <div class="editor-group">
+            <h4>5. Nuestra canción</h4>
+            <label>
+              <span>Nombre de la canción</span>
+              <input type="text" id="ed-cancionNombre" />
+            </label>
+            <label>
+              <span>Artista</span>
+              <input type="text" id="ed-cancionArtista" />
+            </label>
+            <label>
+              <span>Enlace (Spotify o YouTube)</span>
+              <input type="text" id="ed-cancionEnlace" placeholder="https://open.spotify.com/..." />
+            </label>
+          </div>
+        </div>
+
+        <div class="editor-footer">
+          <button type="button" class="btn btn-primary btn-sm" id="btn-download-config">
+            Descargar config.js
+          </button>
+          <button type="button" class="btn btn-ghost btn-sm" id="btn-reset-preview">
+            Restaurar originales
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <script src="config.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
